@@ -1,0 +1,50 @@
+.btn-success{
+	font-size: 20px;
+	background-color: rgb(193, 55, 239)
+	padding: 5px 10px;
+    border-radius: 5px;
+	-webkit-transition: border-radius 0.2s, background-color 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: border-radius 0.2s, background-color 0.2s;
+}
+
+.btn-success:hover{
+	font-size: 20px;
+	padding: 5px 10px;
+    border-radius: 10px;
+	background-color: rgb(193, 55, 239);
+}
+
+div{
+	font-size: 1em;
+}
+
+body{
+	background-color: #fbd8ff;
+	font-family: 'Helvetica', sans-serif;
+}
+
+h1{
+	font-size: 3em;
+	font-weight: 900;
+	text-transform: capitalize;
+}
+
+#example1{
+	font-size: 1em;
+}
+
+#code-box{
+	border-radius: 20px;
+	border-color: rgb(200, 150, 220);
+	border-width: 5px;
+	border-style: solid;
+	background-color: rgb(229, 182, 249);
+}
+
+hr {
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-style:double;
+    border-width: 2px;
+}

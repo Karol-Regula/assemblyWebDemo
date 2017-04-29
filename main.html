@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assembly Demo</title>
+
+  <!-- Bootstrap -->
+  <link href="static/css/bootstrap.css" rel="stylesheet">
+  <link href="static/custom.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1><center>Assembly Programming</center></h1>
+    <b>Navigation:</b><br>
+    <button type="btn-success" id="input1" class="btn btn-success" value="input">Introduction</button>
+    <button type="btn-success" id="input2" class="btn btn-success" value="input">Simple Example + Terms</button>
+    <button type="btn-success" id="input3" class="btn btn-success" value="input">Visuals</button>
+    <button type="btn-success" id="input4" class="btn btn-success" value="input">Usage Details</button>
+    <button type="btn-success" id="input5" class="btn btn-success" value="input">Assembly vs. Python in the Gameboy</button>
+    <button type="btn-success" id="input6" class="btn btn-success" value="input">Hello, World!</button>
+    <center>
+
+      <hr>
+      <div class="row" id="info">
+        <div class="col-md-12">
+          Assembly is a very low level programming language that serves as a streamlined way of writing machine code.<br>
+          There is a one-to-one correspondence between the instructions used in Assembly and machine code.<br>
+          Assembly is device (processor architecture) specific as different architectures have differing pre-defined instruction sets.<br>
+          Assembly is translated into machine language by an assembler.<br>
+        </div>
+      </div>
+    </center>
+
+    <hr>
+    <div class="row" id="example1">
+      <div class="col-md-6">
+        <b>Simple Example</b><br>
+        Load register AL with following byte of code: <code>01100001</code><br>
+        <b>Binary:</b> <code>10110000 01100001</code><br>
+        <b>Hexadecimal:</b> <code>B0 61</code><br>
+        <b>Assembly:</b> <code>MOV AL, 61h</code><br>
+      </div>
+      <div class="col-md-6">
+        <b>Some Terminology:</b><br>
+        Register - easily accessible piece of memory on processor die<br>
+        Accumulator - special register in which calculation results are stored (used in older processors, intel still stores multiplication in EAX and EDX registers)<br>
+        32-bit Intel CPUs have 8 registers (EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI ), 64-bit CPUs have 16<br>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="terminology">
+      <div class="col-md-6" align="center">
+        <img style="width: 90%;" src="resources/registers.jpg">
+      </div>
+      <div class="col-md-6">
+        <img style="width: 90%;" src="resources/pyramid.gif">
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="usage">
+      <div class="col-md-6">
+        <b>Usage</b><br>
+        - Compiled languages are eventually converted into assembly<br>
+        - Wirth’s law - software is becoming slower at a faster rate than hardware is becoming faster<br>
+        - Compilers usually have options to generate assembly code<br>
+      </div>
+      <div class="col-md-6">
+        <br>
+        - Low level applications, interrupt handlers, and hardware drivers benefit from the efficiency of assembly<br>
+        - “Getting money’s worth” out of legacy hardware<br>
+        - Firmware for appliances<br>
+        - Situations where precise timing is required (airplanes, medical equipment)<br>
+        - High security programs<br>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="gameboy">
+      <div class="col-md-6">
+        <b>Usage in the Game Boy (More Complex Example)</b><br>
+        Updating life counter once score exceeds 100:<br>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="registers">
+      <div class="col-md-6" id="code-box">
+        <b>Python:</b><br>
+        <code>
+          score  = 95<br>
+          life = 1<br>
+          ...<br>
+          score += 1<br>
+          if score > 100:<br>
+          &emsp;score = 0<br>
+          &emsp;life += 1<br>
+        </code>
+      </div>
+      <div class="col-md-6" id="code-box">
+        <b>Assembly:</b><br>
+        <code>
+          LD A, 0<br>
+          LD (8000H), A   &emsp;&emsp;&emsp; ; store score in memory<br>
+          …<br>
+          LD A, (8000H)         &emsp;&emsp;&emsp; ; load score from memory, commence check<br>
+          INC A<br>
+          LD (8000H), A<br>
+          SUB 100                   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; ; from accumulator<br>
+          JP C, AFTER            &emsp;&emsp;&emsp;&emsp;&emsp;; jump to AFTER if previous operation is negative<br>
+          LD A, 0<br>
+          LD (8000H), A<br>
+          LD A, (8001H)<br>
+          INC A<br>
+          LD (8001H), A<br>
+          AFTER:  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;;  when score is not above 100 (move along)<br>
+        </code>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="hello">
+      <div class="col-md-6" id="code-box">
+        <b>"Hello World in Assembly:"</b><br>
+        <code>
+          global _start<br>
+          section .data<br>
+          hello	db	"Hello, World!", 10<br>
+          length	equ	$-hello<br>
+          section .text<br>
+          _start:<br>
+          mov eax, 4	&emsp;&emsp;&emsp;&emsp;	; write to file<br>
+          mov ebx, 1	&emsp;&emsp;&emsp;&emsp;	; STDOUT handle<br>
+          mov ecx, hello	&emsp;&nbsp;	; message<br>
+          mov edx, length  &emsp;	; size of message<br>
+          int 80h		&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;	; execute the syscall<br>
+          xor ebx, ebx	&emsp;&emsp;&nbsp;	; send 0 as 'exit code'<br>
+          mov eax, 1	&emsp;&emsp;&emsp;&nbsp;	; terminate process<br>
+          int 80h		&emsp;&emsp;&emsp;&emsp;&emsp;&thinsp;	; execute the syscall<br>
+          ;; intel notation is used (as opposed ot AT&T)<br>
+        </code>
+      </div>
+      <div class="col-md-6">
+        - Very efficient, only several processor operations needed to print "Hello, World!"
+      </div>
+    </div>
+
+    <hr>
+    <div class="row" id="about">
+      <div class="col-md-12" style="font-size: 1em;">
+        Made by Karol Regula.<br>
+        Credits to bootstrap and stack overflow.<br>
+      </div>
+    </div>
+
+
+  </center>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+$('#input1').click(function() {
+  $('html,body').animate({scrollTop: $('#info').offset().top - 40},'slow');
+});
+$('#input2').click(function() {
+  $('html,body').animate({scrollTop: $('#example1').offset().top - 40},'slow');
+});
+$('#input3').click(function() {
+  $('html,body').animate({scrollTop: $('#terminology').offset().top - 40},'slow');
+});
+$('#input4').click(function() {
+  $('html,body').animate({scrollTop: $('#usage').offset().top - 40},'slow');
+});
+$('#input5').click(function() {
+  $('html,body').animate({scrollTop: $('#gameboy').offset().top - 40},'slow');
+});
+$('#input6').click(function() {
+  $('html,body').animate({scrollTop: $('#hello').offset().top - 40},'slow');
+});
+</script>
+</body>
+</html>
