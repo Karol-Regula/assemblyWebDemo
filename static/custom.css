@@ -1,6 +1,7 @@
 .btn-success{
 	font-size: 20px;
-	background-color: rgb(193, 55, 239)
+	background-color: rgb(193, 55, 239);
+	margin-top: 0.2em;
 	padding: 5px 10px;
     border-radius: 5px;
 	-webkit-transition: border-radius 0.2s, background-color 0.2s; /* For Safari 3.1 to 6.0 */
@@ -36,7 +37,7 @@ h1{
 #code-box{
 	border-radius: 20px;
 	border-color: rgb(200, 150, 220);
-	border-width: 5px;
+	border-width: 10px;
 	border-style: solid;
 	background-color: rgb(229, 182, 249);
 }

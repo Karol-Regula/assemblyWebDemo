@@ -26,10 +26,10 @@
       <hr>
       <div class="row" id="info">
         <div class="col-md-12">
-          Assembly is a very low level programming language that serves as a streamlined way of writing machine code.<br>
+          Assembly is a very <b>low level</b> programming language that serves as a streamlined way of writing machine code.<br>
           There is a one-to-one correspondence between the instructions used in Assembly and machine code.<br>
           Assembly is device (processor architecture) specific as different architectures have differing pre-defined instruction sets.<br>
-          Assembly is translated into machine language by an assembler.<br>
+          Assembly is translated into machine language by an <b>assembler</b>.<br>
         </div>
       </div>
     </center>
@@ -45,19 +45,19 @@
       </div>
       <div class="col-md-6">
         <b>Some Terminology:</b><br>
-        Register - easily accessible piece of memory on processor die<br>
-        Accumulator - special register in which calculation results are stored (used in older processors, intel still stores multiplication in EAX and EDX registers)<br>
-        32-bit Intel CPUs have 8 registers (EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI ), 64-bit CPUs have 16<br>
+        <b>- Register</b> - easily accessible piece of memory on the processor die<br>
+        <b>- Accumulator</b> - special register in which calculation results are stored (used in older processors, intel still stores multiplication in EAX and EDX registers)<br>
+        <b>- 32-bit</b> Intel CPUs have 8 registers (EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI ), <b>64-bit</b> CPUs have 16<br>
       </div>
     </div>
 
     <hr>
     <div class="row" id="terminology">
       <div class="col-md-6" align="center">
-        <img style="width: 90%;" src="resources/registers.jpg">
+        <img style="width: 100%;" id="code-box" src="resources/registers.jpg">
       </div>
       <div class="col-md-6">
-        <img style="width: 90%;" src="resources/pyramid.gif">
+        <img style="width: 100%;" src="resources/pyramid.gif">
       </div>
     </div>
 
@@ -65,12 +65,13 @@
     <div class="row" id="usage">
       <div class="col-md-6">
         <b>Usage</b><br>
-        - Compiled languages are eventually converted into assembly<br>
-        - Wirth’s law - software is becoming slower at a faster rate than hardware is becoming faster<br>
+        - Most compiled languages are eventually converted into Assembly<br>
+        - Wirth’s law - software is becoming slower at a faster rate than hardware is becoming faster,
+        due to its efficiency, Assembly may be the answer<br>
         - Compilers usually have options to generate assembly code<br>
       </div>
       <div class="col-md-6">
-        <br>
+        <br>Where is it used?<br>
         - Low level applications, interrupt handlers, and hardware drivers benefit from the efficiency of assembly<br>
         - “Getting money’s worth” out of legacy hardware<br>
         - Firmware for appliances<br>
@@ -83,11 +84,10 @@
     <div class="row" id="gameboy">
       <div class="col-md-6">
         <b>Usage in the Game Boy (More Complex Example)</b><br>
-        Updating life counter once score exceeds 100:<br>
+        Updating life counter once score exceeds 100:<br><br>
       </div>
     </div>
 
-    <hr>
     <div class="row" id="registers">
       <div class="col-md-6" id="code-box">
         <b>Python:</b><br>
